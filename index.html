@@ -1,98 +1,17 @@
-package pkg4thq_aa1;
+<DOCTYPE html>
+<html>
+     <head>
+       <title>My First Webpage </title>
 
-import java.io.FileWriter;
-import java.io.IOException;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
+       <meta charset="UTF-8">
+       <meta name="author" content="My Name">
+       <met name="keywors" content="HTML,CSS,JavaScript">
+       <meta name="revised" content="28-06-2020">
 
-public class avg implements avgInterface {
-    private JTable jTable1;
-
-    public avg(JTable table) {
-        this.jTable1 = table;
-    }
-
-    @Override
-    public void findAverageValue() {
-        String selectedColumn = (String) JOptionPane.showInputDialog(null, "Choose a column:", "Select Column",
-                JOptionPane.QUESTION_MESSAGE, null,
-                new String[]{"2015", "2016", "2017", "All Years"},
-                "2015");
-
-        if (selectedColumn == null) {
-            return;
-        }
-
-        if (selectedColumn.equals("All Years")) {
-
-            for (int colIndex = 1; colIndex <= 3; colIndex++) {
-                calculateAverageForColumn(colIndex);
-            }
-        } else {
-
-            int columnIndex = -1;
-            switch (selectedColumn) {
-                case "2015":
-                    columnIndex = 1;
-                    break;
-                case "2016":
-                    columnIndex = 2;
-                    break;
-                case "2017":
-                    columnIndex = 3;
-                    break;
-                default:
-                    System.out.println("Error: Invalid column selection.");
-                    return;
-            }
-            calculateAverageForColumn(columnIndex);
-        }
-    }
-
-    private void calculateAverageForColumn(int columnIndex) {
-        double sum = 0;
-        int count = 0;
-
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
-            try {
-                String valueStr = jTable1.getValueAt(i, columnIndex).toString().replace(",", "");
-                double value = Double.parseDouble(valueStr);
-                sum += value;
-                count++;
-            } catch (NumberFormatException | NullPointerException ex) {
-                continue;
-            }
-        }
-
-        if (count == 0) {
-            System.out.println("No valid values found in the selected column.");
-            return;
-        }
-
-        double average = sum / count;
-        String formattedAverage = String.format("%,.2f", average);
-
-        try {
-            FileWriter writer = new FileWriter("output.txt", true);
-            writer.write("The average value for the column " + getColumnHeader(columnIndex) + " is: " + formattedAverage + "\n");
-            writer.close();
-            System.out.println("Average value has been written to output.txt");
-        } catch (IOException e) {
-            System.out.println("Error: Could not write to file.");
-            e.printStackTrace();
-        }
-    }
-
-    private String getColumnHeader(int columnIndex) {
-        switch (columnIndex) {
-            case 1:
-                return "2015";
-            case 2:
-                return "2016";
-            case 3:
-                return "2017";
-            default:
-                return "Unknown Column";
-        }
-    }
-}
+       <link rel="icon" href="icon.png" type="image/gif">
+         
+     </head>
+     <body>
+       <!--Place content here-->
+     </body>
+</html>
